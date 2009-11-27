@@ -1,0 +1,35 @@
+
+
+
+1. What is this?
+
+This is a LaTeX template suitable for MSc dissertations at the University
+of Liverpool (online) courses offered via Laureate.
+
+It is very loosely based on UoL's official PhD thesis template.
+
+This template is (C) 2009 Ramon Cahenzli
+Some parts (C) University of Liverpool Computing Services, used with permission
+
+
+2. License
+
+This template is donated to the public domain. You may use it in any way you 
+wish without any restrictions.
+
+The template is developed collaboratively using git at Github:
+
+http://github.com/psy-q/uol-msc-latex-template
+
+
+3. Disclaimer
+
+The author(s) of this template take absolutely no responsibility that the
+format matches the one required by the University of Liverpool or
+Laureate.
+
+It is your own responsibility to verify whether the formatting is still
+correct. If you find out that it needs updating, we would welcome your
+changes also in our git master repository at:
+
+http://github.com/psy-q/uol-msc-latex-template 

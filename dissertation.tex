@@ -1,0 +1,133 @@
+\documentclass[10pt,oneside]{book}
+
+\pagestyle{plain}
+\usepackage{graphics}
+\usepackage{makeidx}
+\usepackage{nomencl}
+
+
+% This is the same geometry as in the .dot file provided by Liverpool
+\usepackage[top=2.54cm, bottom=1.27cm, left=3.05cm, right=3.05cm]{geometry}
+
+% disables section and subsection numbering but leaves chapter numbering intact
+\setcounter{secnumdepth}{0} 
+
+% Arial is just a very cheap copy of Helvetica, so here is the real deal.
+% UoL demands the use of a sans-serif font on blocks of text, so let's comply
+\usepackage[T1]{fontenc}
+
+% Helvetica doesn't really need to be set specifically, because pslatex
+% includes setting the sans-serif font to Helvetica
+\usepackage[scaled]{helvet}
+
+% same as Times, but uses a specially narrowed Courier. This is preferred over 
+% Times because of the way it handles Courier.
+\usepackage{pslatex}
+\renewcommand*\familydefault{\sfdefault}
+
+% DANGER: Underlining section titles is considered bad typography. We
+% do it anyway because UoL likes it
+
+% titlesec seems to work better than sectsty for this horrible purpose 
+\usepackage{titlesec}
+\titleformat{\chapter} {\fontsize{14}{14}\rmfamily\bfseries\scshape\centering}{\chaptertitlename\ \thechapter.}{.5em}{}{} 
+\titleformat{\section} {\fontsize{12}{12}\rmfamily\bfseries}{\thesection}{.5em}{\underline}{}
+\titleformat{\subsection} {\fontsize{12}{12}\rmfamily\bfseries}{\thesection}{.5em}{\underline}{}
+\titleformat{\subsubsection} {\fontsize{12}{12}\rmfamily\bfseries}{\thesection}{.5em}{\underline}{}
+
+
+% --- Colors
+% UoL does not explicitly call for these, but they at least make it possible to
+% tell a link/URL apart from normal text
+\usepackage{color}
+\definecolor{DarkBlue}{rgb}{0,0.03,0.25}
+
+\usepackage[colorlinks]{hyperref}
+\hypersetup{colorlinks=true,linkcolor=DarkBlue,anchorcolor=DarkBlue,citecolor=DarkBlue,filecolor=DarkBlue,urlcolor=DarkBlue}
+
+\usepackage[pdftex]{graphicx}
+
+
+% --- Bibliography-style (UoL demands Harvard for MSc but doesn't care much about that for PhD)
+\usepackage{natbib}
+\bibliographystyle{agsm}
+
+% Without this, the bibstyle would use \harvardurl, which breaks
+% on special characters such as _ in URLs
+\usepackage{url}
+\renewcommand{\harvardurl}{URL: \url}
+
+% Put a , between author name and year
+\bibpunct{(}{)}{,}{a}{,}{;}
+
+% Double spacing was in the .dot file on the normal paragraph text
+\usepackage{setspace} 
+\doublespacing
+
+\makeindex
+\makeglossary
+\begin{document}
+
+
+\title{Your dissertation's title}
+\author{Your name}
+\date{XYZ 2010}
+\maketitle 
+\frontmatter
+
+\chapter{Abstract}
+
+Put some abstract text here.
+
+\tableofcontents
+
+% Contents not put in table of contents by default so add it separately
+
+\addcontentsline{toc}{chapter}{Contents}
+
+\listoffigures
+
+
+% List of figures  not put in table of contents by default so add it separately
+
+\addcontentsline{toc}{chapter}{List of Figures}
+
+
+\chapter{Acknowledgement}
+
+The author wishes to thank the Flying Spaghetti Monster for putting him into this world via His Noodly Appendage.
+
+
+\printglossary
+
+\addcontentsline{toc}{chapter}{Nomenclature}
+
+
+\mainmatter
+
+\chapter{First Chapter}
+\section{First Section}
+
+Section text.
+
+\subsection{Some subsection}
+
+A subsection.
+
+
+
+\appendix
+\chapter{Appendix}
+Appendices are usually labelled with letters separate to ordinary chapters.
+
+
+% Switch back to single spacing so things don't look so ugly in these sections
+\singlespacing
+\bibliography{dissertation}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+\printindex
+\addcontentsline{toc}{chapter}{Index}
+
+
+\end{document}
