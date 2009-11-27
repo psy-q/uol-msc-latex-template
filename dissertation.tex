@@ -48,9 +48,12 @@
 \usepackage[pdftex]{graphicx}
 
 
-% --- Bibliography-style (UoL demands Harvard for MSc but doesn't care much about that for PhD)
+% --- Bibliography style (UoL demands Harvard for MSc but doesn't care much about that for PhD)
 \usepackage{natbib}
 \bibliographystyle{agsm}
+
+% This is the title from the .dot file
+\renewcommand\bibname{References Cited}
 
 % Without this, the bibstyle would use \harvardurl, which breaks
 % on special characters such as _ in URLs
@@ -64,6 +67,9 @@
 \usepackage{setspace} 
 \doublespacing
 
+
+
+
 \makeindex
 \makeglossary
 \begin{document}
@@ -75,9 +81,39 @@
 \maketitle 
 \frontmatter
 
+
+% No paragraph indendation. The .dot file is very inconsistent about this,
+% so we don't know what UoL actually wants in this case.
+\setlength{\parindent}{0in}
+\setlength{\parskip}{10pt} 
+
+
 \chapter{Abstract}
 
 Put some abstract text here.
+
+
+\chapter{Declaration}
+
+I hereby certify that this dissertation constitutes my own product, that where the language of others is set forth, quotation marks so indicate, and that appropriate credit is given where I have used the language, ideas, expressions, or writings of another.
+
+I declare that the dissertation describes original work that has not previously been presented for the award of any other degree of any institution.
+
+Signed,
+
+Your-name-here
+
+
+\chapter{Acknowledgements}
+
+
+The author wishes to thank the Flying Spaghetti Monster for putting him into this world via His Noodly Appendage.
+
+
+
+% No parskip during ToC etc.
+\setlength{\parskip}{0pt} 
+
 
 \tableofcontents
 
@@ -85,25 +121,23 @@ Put some abstract text here.
 
 \addcontentsline{toc}{chapter}{Contents}
 
-\listoffigures
-
-
+\listoftables
 % List of figures  not put in table of contents by default so add it separately
+\addcontentsline{toc}{chapter}{List of Tables}
 
+\listoffigures
+% List of figures  not put in table of contents by default so add it separately
 \addcontentsline{toc}{chapter}{List of Figures}
 
 
-\chapter{Acknowledgement}
-
-The author wishes to thank the Flying Spaghetti Monster for putting him into this world via His Noodly Appendage.
-
-
-\printglossary
-
-\addcontentsline{toc}{chapter}{Nomenclature}
+% Longer skip after paragraphs for the main bodies of text
+\setlength{\parskip}{10pt} 
 
 
 \mainmatter
+
+
+% In a proper document you would probably start using includes now
 
 \chapter{First Chapter}
 \section{First Section}
@@ -117,7 +151,7 @@ A subsection.
 
 
 \appendix
-\chapter{Appendix}
+\chapter{Some Appendix}
 Appendices are usually labelled with letters separate to ordinary chapters.
 
 
@@ -127,10 +161,8 @@ Appendices are usually labelled with letters separate to ordinary chapters.
 % Don't forget to supply a dissertation.bib file with your bibliography in
 % BibTex format
 \bibliography{dissertation}
-\addcontentsline{toc}{chapter}{Bibliography}
+\addcontentsline{toc}{chapter}{References Cited}
 
-\printindex
-\addcontentsline{toc}{chapter}{Index}
 
 
 \end{document}
