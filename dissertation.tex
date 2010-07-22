@@ -1,14 +1,20 @@
-\documentclass[10pt,oneside]{book}
+\documentclass[a4paper,10pt,oneside]{book}
 
 \pagestyle{plain}
 \usepackage{graphics}
 \usepackage{makeidx}
 \usepackage{nomencl}
 \usepackage{setspace} 
-
+\usepackage[utf8]{inputenc}
+\usepackage{eurosym}
+\usepackage{booktabs} % prettier tables
+\usepackage{listings} % Pretty-printing source code
+\usepackage{caption} % For custom caption styling in e.g. listings
+\usepackage{datetime}
 
 % This is the same geometry as in the .dot file provided by Liverpool
-\usepackage[top=2.54cm, bottom=1.27cm, left=3.05cm, right=3.05cm]{geometry}
+% Had to adjust the bottom margin because Liverpool's was much too small
+\usepackage[top=2.3cm, bottom=2.54cm, left=3.05cm, right=3.05cm]{geometry}
 
 % disables section and subsection numbering but leaves chapter numbering intact
 \setcounter{secnumdepth}{0} 
@@ -42,11 +48,29 @@
 % tell a link/URL apart from normal text
 \usepackage{color}
 \definecolor{DarkBlue}{rgb}{0,0.03,0.25}
+\definecolor{LightGray}{rgb}{0.97,0.97,0.97}
+
 
 \usepackage[colorlinks]{hyperref}
 \hypersetup{colorlinks=true,linkcolor=DarkBlue,anchorcolor=DarkBlue,citecolor=DarkBlue,filecolor=DarkBlue,urlcolor=DarkBlue}
 
 \usepackage[pdftex]{graphicx}
+
+
+
+% --- Code listings
+
+%this new format will add a horizontal rule before the caption,
+%and will put the caption label (i.e., "Algorithm" and its number) in boldface
+%and use a period as separator
+\DeclareCaptionFormat*{mystyle}{\singlespacing\noindent\hrulefill\par\bfseries#1.\space\normalfont#3\par}
+%use the newly created format in lstlisting environments and if the caption
+%or title fits in a single line, do not center it
+\captionsetup[lstlisting]{format=mystyle,singlelinecheck=false}
+
+%add two horizontal lines and increase the vertical space between the caption
+%and the listing
+\lstset{breaklines=true,basicstyle=\ttfamily,frame=tb,belowcaptionskip=1em,tabsize=2,backgroundcolor=\color{LightGray}}
 
 
 % --- Bibliography style (UoL demands Harvard for MSc but doesn't care much about that for PhD)
@@ -66,16 +90,18 @@
 
 
 
+% Penalize widows/orphans to prevent them
+% Enable or disable as necessary
+\widowpenalty=10000
+\clubpenalty=10000
+
 
 \makeindex
 \makeglossary
 \begin{document}
 
+\include{title}
 
-\title{Your dissertation's title}
-\author{Your name}
-\date{XYZ 2010}
-\maketitle 
 \frontmatter
 
 
